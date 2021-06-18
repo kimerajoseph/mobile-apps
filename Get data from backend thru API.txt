@@ -1,0 +1,32 @@
+submit = () => {
+      // console.warn(this.state)
+      // let rjx = /^[a-zA-z]+$/;
+      // let isValid = rjx.test(this.state.surName)
+      // let isValid1 = rjx.test(this.state.givenName)
+      // let isValid2 = rjx.test(this.state.nationality)
+      // let isValid3 = rjx.test(this.state.sex)
+      // if (!isValid || !isValid1 || !isValid2 || !isValid3 ){alert('Name, Nationality and Sex Should only have alphabets')
+      // }
+      // let passrjx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
+      // let passValid = passrjx.test(this.state.password)
+      // if(!passValid){alert("Password must be atleast 8 characters long, have at least 1 capital letter, one special character and one number")}
+     
+  
+      axios.get("http://192.168.43.7:5000/weather").then(function(response){
+        var data = JSON.stringify(response.data);
+        //console.log("THIS IS THE RESPONSE " + JSON.stringify(response.data))
+        //console.log("ALL DATA " + response.data.temp)
+        var finalData = JSON.parse(data)
+        console.log(finalData)
+        var fTemp = finalData['current']['temperature']
+        console.log("THIS IS THE FINAL TEMP " + fTemp)
+        
+        this.setState({
+          weather:fTemp
+        })
+        
+      })
+      
+
+      console.warn(this.state)
+    }
